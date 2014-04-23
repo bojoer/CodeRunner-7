@@ -1,0 +1,15 @@
+#Ignoring suo files
+*.suo
+*.user
+
+#Ignoring exe files
+*.exe
+
+#Ignoring the bin directory
+source/bin/
+
+#Ignoring the obj directory
+source/obj/
+
+#Ignoring the Properties directory
+Properties/
