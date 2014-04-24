@@ -3,8 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{B8950F29-3135-4B5A-91EF-69780D7B5CBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterServer", "Master\MasterServer.csproj", "{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Debug|x86.ActiveCfg = Debug|x86
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Debug|x86.Build.0 = Debug|x86
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Release|x86.ActiveCfg = Release|x86
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B} = {B8950F29-3135-4B5A-91EF-69780D7B5CBC}
 	EndGlobalSection
 EndGlobal
