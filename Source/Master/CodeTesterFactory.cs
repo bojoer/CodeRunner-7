@@ -8,12 +8,12 @@ namespace MasterServer
         {
             if (languageUsed.Equals("JAVA"))
             {
-                return new JavaCodeTester();
+//                return new JavaCodeTester();
             }
 
             if (languageUsed.Equals("C#"))
             {
-                return new CSharpCodeTester();
+//                return new CSharpCodeTester();
             }
 
             return null;

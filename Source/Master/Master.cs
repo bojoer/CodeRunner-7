@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using MasterServer.Constants;
 using MasterServer.Interfaces;
 
 namespace MasterServer
@@ -8,12 +9,10 @@ namespace MasterServer
     class Master: IMaster
     {
         private TcpListener TcpListener { set; get; }
-        private const int ListeningPort = 8000;
-        private const string ListeningIpAddress = "127.0.0.1";
 
         public Master()
         {
-            TcpListener = new TcpListener(IPAddress.Parse(ListeningIpAddress), ListeningPort);
+            TcpListener = new TcpListener(IPAddress.Parse(EnvironmentConstants.ServerIp), EnvironmentConstants.ServerPort);
         }
 
         public void Start()

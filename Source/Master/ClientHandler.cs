@@ -9,13 +9,13 @@ namespace MasterServer
         {
             var networkStream = tcpClient.GetStream();
 
-            ReadFileFromClient(networkStream);
+//            ReadFileFromClient(networkStream);
 
             ICodeRunner codeRunner = new CodeRunner();
 
-            var result = codeRunner.Run();
+//            var result = codeRunner.Run();
 
-            ReturnResultToClient(result);
+//            ReturnResultToClient(result);
         }
     }
 }
