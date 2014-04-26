@@ -6,10 +6,10 @@
 *.exe
 
 #Ignoring the bin directory
-source/bin/
+bin/
 
 #Ignoring the obj directory
-source/obj/
+obj/
 
 #Ignoring the Properties directory
 Properties/
