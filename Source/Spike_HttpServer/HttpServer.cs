@@ -4,6 +4,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Web;
+using Microsoft.SqlServer.Server;
 
 namespace Spike_HttpServer
 {
@@ -49,12 +50,16 @@ namespace Spike_HttpServer
 
         private void ReadFileFromClient(HttpListenerContext context)
         {
+
             using (var stream = context.Request.InputStream)
+            using (var reader = new StreamReader(stream))
+            using (var fileWriter = new StreamWriter("d:\\test.txt"))
             {
-                using (var reader = new StreamReader(stream))
+                var data = reader.ReadLine();
+                while (data != null)
                 {
-                    var data = reader.ReadToEnd();
-                    Console.WriteLine(data);
+                    fileWriter.WriteLine(data);
+                    data = reader.ReadLine();
                 }
             }
 
