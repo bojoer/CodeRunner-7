@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Net;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using Spike_HttpServer.Spikes;
 
 namespace Spike_HttpClient
 {
@@ -37,7 +39,6 @@ namespace Spike_HttpClient
             //            var parameters = GetParameters();
             //            var urlParameters = PrepareUrlParameterList(parameters);
 
-            string dataFromServer = "";
 
             try
             {
@@ -46,7 +47,7 @@ namespace Spike_HttpClient
 
                 if (httpResponse.StatusCode == HttpStatusCode.OK)
                 {
-                    dataFromServer = ReadResponseFromServer(httpResponse);
+                    ReadResponseFromServer(httpResponse);
                 }
 
             }
@@ -56,25 +57,21 @@ namespace Spike_HttpClient
                 return;
             }
 
-            Console.WriteLine(dataFromServer);
-
             Console.ReadLine();
         }
 
         private string ReadResponseFromServer(HttpWebResponse httpResponse)
         {
-            string responseMessage;
             Console.WriteLine("Reading message from server");
 
-            using (var responseStream = httpResponse.GetResponseStream())
+            using (var stream = httpResponse.GetResponseStream())
             {
-                using (var reader = new StreamReader(responseStream))
-                {
-                    responseMessage = reader.ReadToEnd();
-                }
+                var formatter = new BinaryFormatter();
+                var testObject = (TestClass)formatter.Deserialize(stream);
+                Console.WriteLine(testObject.Property1 + " " + testObject.Property2);
             }
 
-            return responseMessage;
+            return "";
         }
 
         private void SendFileToServer()
@@ -103,8 +100,7 @@ namespace Spike_HttpClient
 
             var response = httpWebRequest.GetResponse();
 
-            var messageFromServer = ReadResponseFromServer((HttpWebResponse)response);
-            Console.WriteLine(messageFromServer);
+            ReadResponseFromServer((HttpWebResponse)response);
 
             // after uploading close stream 
             requestStream.Close();

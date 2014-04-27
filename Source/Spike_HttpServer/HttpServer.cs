@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Web;
 using Microsoft.SqlServer.Server;
+using Spike_HttpServer.Spikes;
 
 namespace Spike_HttpServer
 {
@@ -45,7 +47,9 @@ namespace Spike_HttpServer
 
             ReadFileFromClient(httpListenerContext);
 
-            WriteToClient(httpListenerContext.Response, "You are connected and your file has been received!");
+//            WriteToClient(httpListenerContext.Response, "You are connected and your file has been received!");
+
+            WriteObjectToClient(httpListenerContext.Response, new TestClass { Property1 = "Hello World!", Property2 = 42 });
         }
 
         private void ReadFileFromClient(HttpListenerContext context)
@@ -75,6 +79,18 @@ namespace Spike_HttpServer
             using (var outputStream = httpResponse.OutputStream)
             {
                 outputStream.Write(responseContents, 0, responseContents.Length);
+            }
+        }
+
+        private void WriteObjectToClient(HttpListenerResponse httpResponse, TestClass testObject)
+        {
+            testObject.Property1 = "Hello World!";
+            testObject.Property2 = 42;
+
+            using (var stream = httpResponse.OutputStream)
+            {
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(stream, testObject);
             }
         }
     }
