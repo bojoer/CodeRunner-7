@@ -1,9 +1,9 @@
-﻿using System.Net.Sockets;
+﻿using System.Net;
 
 namespace MasterServer.Interfaces
 {
     public interface IClientHandler
     {
-        void HandleClient(TcpClient tcpClient);
+        void HandleClient(HttpListenerContext tcpClient);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Net;
-using System.Net.Sockets;
 using System.Threading;
 using MasterServer.Constants;
 using MasterServer.Interfaces;
@@ -8,15 +7,21 @@ namespace MasterServer
 {
     class Master: IMaster
     {
-        private TcpListener TcpListener { set; get; }
+        private HttpListener HttpListener { get; set; }
 
-        public Master()
+        private IClientHandler ClientHandler { get; set; }
+
+        public Master(IClientHandler clientHandler)
         {
-            TcpListener = new TcpListener(IPAddress.Parse(EnvironmentConstants.ServerIp), EnvironmentConstants.ServerPort);
+            ClientHandler = clientHandler;
         }
 
         public void Start()
         {
+            HttpListener = new HttpListener();
+            HttpListener.Prefixes.Add(EnvironmentConstants.ServerHttpUrl);
+            HttpListener.Start();
+    
             ListenForConnections();
         }
 
@@ -24,15 +29,16 @@ namespace MasterServer
         {
             while (true)
             {
-                var tcpClient = TcpListener.AcceptTcpClient();
-                var workerThread = new Thread(HandleClient);
-                workerThread.Start(tcpClient);
+                var httpListenerContext = HttpListener.GetContext();
+                var thread = new Thread(HandleClient);
+                thread.Start(httpListenerContext);
             }
         }
 
-        private void HandleClient(object client)
+        private void HandleClient(object obj)
         {
-            var tcpClient = (TcpClient) client;
+            var httpContext = (HttpListenerContext) obj;
+            ClientHandler.HandleClient(httpContext);
         }
     }
 }
