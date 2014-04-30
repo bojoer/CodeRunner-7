@@ -2,6 +2,6 @@
 {
     public interface ICodeHandler
     {
-        IResult Execute(string fileName);
+        IResult HandleCode(string fileName);
     }
 }

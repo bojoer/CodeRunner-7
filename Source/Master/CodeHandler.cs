@@ -5,7 +5,7 @@ namespace MasterServer
 {
     public class CodeHandler : ICodeHandler
     {
-        public IResult Execute(string fileName)
+        public IResult HandleCode(string fileName)
         {
             var languageUsed = GetLanguageOfTheCode(fileName);
             if (languageUsed == null)

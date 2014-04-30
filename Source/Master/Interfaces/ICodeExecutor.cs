@@ -2,6 +2,6 @@
 {
     public interface ICodeExecutor
     {
-        IResult Execute(string filePath);
+        IResult Execute(string codeFilePath);
     }
 }

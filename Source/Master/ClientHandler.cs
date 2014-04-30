@@ -16,7 +16,7 @@ namespace MasterServer
 
             ICodeHandler codeHandler = new CodeHandler();
 
-            var result = codeHandler.Execute(fileName);
+            var result = codeHandler.HandleCode(fileName);
 
             ReturnResultToClient(httpContext.Response, result);
         }
