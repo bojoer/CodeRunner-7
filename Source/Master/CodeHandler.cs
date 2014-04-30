@@ -1,13 +1,12 @@
-using MasterServer.Constants;
+﻿using MasterServer.Constants;
 using MasterServer.Interfaces;
 
 namespace MasterServer
 {
-    public class CodeRunner : ICodeRunner
+    public class CodeHandler : ICodeHandler
     {
-        public IResult Run(string fileName)
+        public IResult Execute(string fileName)
         {
-
             var languageUsed = GetLanguageOfTheCode(fileName);
             if (languageUsed == null)
             {
@@ -18,8 +17,8 @@ namespace MasterServer
                 };
             }
 
-            var codeTester = CodeTesterFactory.GetTester(languageUsed);
-            if (codeTester == null)
+            var codeExecutor = CodeExecutorFactory.GetExecutor(languageUsed);
+            if (codeExecutor == null)
             {
                 return new Result
                 {
@@ -28,7 +27,7 @@ namespace MasterServer
                 };
             }
 
-            var result = codeTester.Test(fileName);
+            var result = codeExecutor.Execute(fileName);
 
             return result;
         }

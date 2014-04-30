@@ -41,20 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeHandler.cs" />
     <Compile Include="Constants\EnvironmentConstants.cs" />
     <Compile Include="Constants\ErrorMessages.cs" />
     <Compile Include="Constants\FileConstants.cs" />
-    <Compile Include="Interfaces\ICodeTester.cs" />
+    <Compile Include="Interfaces\ICodeExecutor.cs" />
+    <Compile Include="Interfaces\ICodeHandler.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="ClientHandler.cs" />
-    <Compile Include="CodeRunner.cs" />
     <Compile Include="Interfaces\IClientHandler.cs" />
-    <Compile Include="Interfaces\ICodeRunner.cs" />
     <Compile Include="Interfaces\IMaster.cs" />
     <Compile Include="Interfaces\IResult.cs" />
     <Compile Include="Master.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CodeTesterFactory.cs" />
+    <Compile Include="CodeExecutorFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

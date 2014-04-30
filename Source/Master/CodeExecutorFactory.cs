@@ -2,9 +2,9 @@
 
 namespace MasterServer
 {
-    public class CodeTesterFactory
+    public class CodeExecutorFactory
     {
-        public static ICodeTester GetTester(string languageUsed)
+        public static ICodeExecutor GetExecutor(string languageUsed)
         {
             if (languageUsed.Equals("JAVA"))
             {

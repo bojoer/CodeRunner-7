@@ -14,9 +14,9 @@ namespace MasterServer
 
             var fileName = ReadCodeFileFromClient(httpContext.Request);
 
-            ICodeRunner codeRunner = new CodeRunner();
+            ICodeHandler codeHandler = new CodeHandler();
 
-            var result = codeRunner.Run(fileName);
+            var result = codeHandler.Execute(fileName);
 
             ReturnResultToClient(httpContext.Response, result);
         }
