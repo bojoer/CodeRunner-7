@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Runtime.Serialization;
 
 using MasterServer.Interfaces;
 using MasterServer.Utilities;
@@ -10,13 +12,15 @@ namespace MasterServer
         public IResult Execute(string codeFilePath)
         {
             var fileName = Path.GetFileName(codeFilePath);
-            var testerName = GetTesterName(fileName);
+            var testerName = @"C:\Projects\CodeRunner\Source\Master\Problem1Tester.cs";
 
-            var compilerResults = CodeExecutionUtilities.Compile(codeFilePath);
-            if (compilerResults.Errors.HasErrors)
+            var compilerResultsForCode = CodeExecutionUtilities.Compile(codeFilePath);
+            var compilerResultsForTester = CodeExecutionUtilities.Compile(testerName);
+
+            if (compilerResultsForCode.Errors.HasErrors)
             {
                 var result = new Result { IsSuccessFul = false };
-                foreach (var error in compilerResults.Errors)
+                foreach (var error in compilerResultsForCode.Errors)
                 {
                     result.ErrorMessage += error;
                 }
@@ -24,7 +28,13 @@ namespace MasterServer
                 return result;
             }
 
-            CodeExecutionUtilities.Run(compilerResults, testerName , "Test", new object[] { fileName });
+            var codeAssembly = compilerResultsForCode.CompiledAssembly;
+            var assemblyType = codeAssembly.GetType();
+            var solutionInstance = Activator.CreateInstance(typeof(Problem1));
+
+            var isSuccessful = (bool)CodeExecutionUtilities.Run(compilerResultsForTester, "MasterServer.Problem1Tester" , "Test", new[] { solutionInstance });
+
+            Console.WriteLine("Run result:" + isSuccessful);
 
             return GetResultForTheExecutedCode(fileName);
         }

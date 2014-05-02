@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spike_HttpClient", "Spike_H
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spike_RunningCode", "Spike_RunningCode\Spike_RunningCode.csproj", "{E3F036F5-44D3-41B8-953B-5D774F30DA06}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestClient", "TestClient\TestClient.csproj", "{4434433D-EEEF-4DC9-AD8B-D7503F95260E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,16 @@ Global
 		{E3F036F5-44D3-41B8-953B-5D774F30DA06}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E3F036F5-44D3-41B8-953B-5D774F30DA06}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E3F036F5-44D3-41B8-953B-5D774F30DA06}.Release|x86.ActiveCfg = Release|Any CPU
+		{4434433D-EEEF-4DC9-AD8B-D7503F95260E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4434433D-EEEF-4DC9-AD8B-D7503F95260E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4434433D-EEEF-4DC9-AD8B-D7503F95260E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4434433D-EEEF-4DC9-AD8B-D7503F95260E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4434433D-EEEF-4DC9-AD8B-D7503F95260E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4434433D-EEEF-4DC9-AD8B-D7503F95260E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4434433D-EEEF-4DC9-AD8B-D7503F95260E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4434433D-EEEF-4DC9-AD8B-D7503F95260E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4434433D-EEEF-4DC9-AD8B-D7503F95260E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4434433D-EEEF-4DC9-AD8B-D7503F95260E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,5 +82,6 @@ Global
 		{A1FD5544-40E2-4B96-868B-CAA3781C6EA9} = {B8950F29-3135-4B5A-91EF-69780D7B5CBC}
 		{D7DAE476-8A28-4D49-9B7D-F082D50E988D} = {B8950F29-3135-4B5A-91EF-69780D7B5CBC}
 		{E3F036F5-44D3-41B8-953B-5D774F30DA06} = {B8950F29-3135-4B5A-91EF-69780D7B5CBC}
+		{4434433D-EEEF-4DC9-AD8B-D7503F95260E} = {B8950F29-3135-4B5A-91EF-69780D7B5CBC}
 	EndGlobalSection
 EndGlobal

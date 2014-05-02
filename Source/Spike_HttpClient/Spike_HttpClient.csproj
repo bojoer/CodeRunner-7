@@ -42,13 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HttpClient.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Spike_HttpServer\Spike_HttpServer.csproj">
       <Project>{A1FD5544-40E2-4B96-868B-CAA3781C6EA9}</Project>
       <Name>Spike_HttpServer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

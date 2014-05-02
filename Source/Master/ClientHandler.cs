@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net;
 using System.Runtime.Serialization.Formatters.Binary;
 using MasterServer.Interfaces;
@@ -7,16 +8,17 @@ namespace MasterServer
 {
     class ClientHandler : IClientHandler
     {
-        private const string FileName = "D:\\test.txt";
+        private const string FileName = "C:\\test.txt";
 
         public void HandleClient(HttpListenerContext httpContext)
         {
 
             var fileName = ReadCodeFileFromClient(httpContext.Request);
+            Console.WriteLine("File read from client");
 
             ICodeHandler codeHandler = new CodeHandler();
 
-            var result = codeHandler.HandleCode(fileName);
+            var result = codeHandler.HandleCode(@"C:\Projects\CodeRunner\Source\Master\Problem1.cs");
 
             ReturnResultToClient(httpContext.Response, result);
         }

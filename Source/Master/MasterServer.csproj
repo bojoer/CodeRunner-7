@@ -48,6 +48,10 @@
     <Compile Include="CSharpCodeExecutor.cs" />
     <Compile Include="Interfaces\ICodeExecutor.cs" />
     <Compile Include="Interfaces\ICodeHandler.cs" />
+    <Compile Include="Interfaces\ISolution.cs" />
+    <Compile Include="Interfaces\ITester.cs" />
+    <Compile Include="IProblem1.cs" />
+    <Compile Include="Problem1.cs" />
     <Compile Include="Problem1Tester.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="ClientHandler.cs" />
@@ -55,9 +59,11 @@
     <Compile Include="Interfaces\IMaster.cs" />
     <Compile Include="Interfaces\IResult.cs" />
     <Compile Include="Master.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CodeExecutorFactory.cs" />
     <Compile Include="Utilities\CodeExecutionUtilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

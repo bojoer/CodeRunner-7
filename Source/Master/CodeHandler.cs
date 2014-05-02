@@ -34,7 +34,7 @@ namespace MasterServer
 
         private string GetLanguageOfTheCode(string fileName)
         {
-            return null;
+            return "C#";
         }
     }
 }

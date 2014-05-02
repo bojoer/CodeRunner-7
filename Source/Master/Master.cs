@@ -40,5 +40,11 @@ namespace MasterServer
             var httpContext = (HttpListenerContext) obj;
             ClientHandler.HandleClient(httpContext);
         }
+
+        static void Main(string[] args)
+        {
+            var master = new Master(new ClientHandler());
+            master.Start();
+        }
     }
 }
