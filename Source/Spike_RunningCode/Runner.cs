@@ -1,5 +1,6 @@
 ﻿using System;
 using System.CodeDom.Compiler;
+using System.IO;
 using System.Linq;
 
 using Microsoft.CSharp;
@@ -10,12 +11,7 @@ namespace Spike_RunningCode
     {
         static void Main(string[] args)
         {
-            var runner = new Runner();
-
-            var compilerResults = runner.Compile(@"C:\Projects\CodeRunner\TestClass.cs");
-
-            runner.Run(compilerResults);
-
+            File.Create(@"C:\Projects\CodeRunner\Source\Spike_RunningCode\CodeFiles\test.cs");
             Console.ReadLine();
         }
 
@@ -25,12 +21,13 @@ namespace Spike_RunningCode
                                  {
                                      GenerateInMemory = true,
                                      TreatWarningsAsErrors = false,
-                                     GenerateExecutable = false,
+                                     GenerateExecutable = true,
                                      CompilerOptions = "/optimize"
                                  };
 
             var codeProvider = new CSharpCodeProvider();
             var compilerResults = codeProvider.CompileAssemblyFromFile(parameters, new[] { filePath });
+            compilerResults.PathToAssembly = @"C:\";
 
             return compilerResults;
         }
@@ -46,10 +43,10 @@ namespace Spike_RunningCode
             }
 
             var module = compilerResults.CompiledAssembly.GetModules()[0];
-            var moduleType = module.GetType("TestClass");
-            var methodInfo = moduleType.GetMethod("Add");
+            var moduleType = module.GetType("test");
+            var methodInfo = moduleType.GetMethod("Main");
 
-            var returnValue = (int) methodInfo.Invoke(Activator.CreateInstance(moduleType), new object[] { 1, 2 });
+            var returnValue = (int) methodInfo.Invoke(null, new object[] { null });
             Console.WriteLine(returnValue);
         }
     }

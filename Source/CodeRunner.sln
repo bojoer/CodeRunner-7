@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{B8950F29-3135-4B5A-91EF-69780D7B5CBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterServer", "Master\MasterServer.csproj", "{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spike_HttpServer", "Spike_HttpServer\Spike_HttpServer.csproj", "{A1FD5544-40E2-4B96-868B-CAA3781C6EA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spike_HttpClient", "Spike_HttpClient\Spike_HttpClient.csproj", "{D7DAE476-8A28-4D49-9B7D-F082D50E988D}"
@@ -12,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spike_RunningCode", "Spike_RunningCode\Spike_RunningCode.csproj", "{E3F036F5-44D3-41B8-953B-5D774F30DA06}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestClient", "TestClient\TestClient.csproj", "{4434433D-EEEF-4DC9-AD8B-D7503F95260E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterServer", "MasterServer\MasterServer.csproj", "{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,16 +23,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Debug|x86.ActiveCfg = Debug|x86
-		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Debug|x86.Build.0 = Debug|x86
-		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Release|Any CPU.ActiveCfg = Release|x86
-		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Release|Mixed Platforms.Build.0 = Release|x86
-		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Release|x86.ActiveCfg = Release|x86
-		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Release|x86.Build.0 = Release|x86
 		{A1FD5544-40E2-4B96-868B-CAA3781C6EA9}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{A1FD5544-40E2-4B96-868B-CAA3781C6EA9}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{A1FD5544-40E2-4B96-868B-CAA3781C6EA9}.Debug|Mixed Platforms.Build.0 = Debug|x86
@@ -73,15 +63,25 @@ Global
 		{4434433D-EEEF-4DC9-AD8B-D7503F95260E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4434433D-EEEF-4DC9-AD8B-D7503F95260E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4434433D-EEEF-4DC9-AD8B-D7503F95260E}.Release|x86.ActiveCfg = Release|Any CPU
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Debug|x86.ActiveCfg = Debug|x86
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Debug|x86.Build.0 = Debug|x86
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Release|Any CPU.ActiveCfg = Release|x86
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Release|Mixed Platforms.Build.0 = Release|x86
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Release|x86.ActiveCfg = Release|x86
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B} = {B8950F29-3135-4B5A-91EF-69780D7B5CBC}
 		{A1FD5544-40E2-4B96-868B-CAA3781C6EA9} = {B8950F29-3135-4B5A-91EF-69780D7B5CBC}
 		{D7DAE476-8A28-4D49-9B7D-F082D50E988D} = {B8950F29-3135-4B5A-91EF-69780D7B5CBC}
 		{E3F036F5-44D3-41B8-953B-5D774F30DA06} = {B8950F29-3135-4B5A-91EF-69780D7B5CBC}
 		{4434433D-EEEF-4DC9-AD8B-D7503F95260E} = {B8950F29-3135-4B5A-91EF-69780D7B5CBC}
+		{F7A95570-A6B5-4C5C-A7CE-3659662C1E4B} = {B8950F29-3135-4B5A-91EF-69780D7B5CBC}
 	EndGlobalSection
 EndGlobal

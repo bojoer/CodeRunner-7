@@ -1,5 +1,6 @@
 ﻿using System;
 using System.CodeDom.Compiler;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
@@ -46,6 +47,37 @@ namespace MasterServer.Utilities
 
             string path = Uri.UnescapeDataString(uri.Path);
             return Path.GetFileName(path); 
+        }
+
+        public static string ExecuteCommand(string command)
+        {
+            var processStartInfo = new ProcessStartInfo {
+                                           CreateNoWindow = true,
+                                           UseShellExecute = false,
+                                           RedirectStandardError = true,
+                                           RedirectStandardOutput = true,
+                                           WorkingDirectory = @"C:\",
+                                           Arguments = @"/c csc C:\test.cs",
+                                           FileName = "cmd.exe"
+                                       };
+
+            var process = Process.Start(processStartInfo);
+            process.WaitForExit();
+
+            string output = process.StandardOutput.ReadToEnd();
+            string error = process.StandardError.ReadToEnd();
+
+            if (output != null)
+            {
+                Console.WriteLine("Output:" + output);
+            }
+
+            if (error != null)
+            {
+                Console.WriteLine("Error:" + error);
+            }
+
+            return "";
         }
     }
 }

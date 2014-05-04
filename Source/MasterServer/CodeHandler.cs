@@ -5,9 +5,8 @@ namespace MasterServer
 {
     public class CodeHandler : ICodeHandler
     {
-        public IResult HandleCode(string fileName)
+        public IResult HandleCode(string fileName, string languageUsed)
         {
-            var languageUsed = GetLanguageOfTheCode(fileName);
             if (languageUsed == null)
             {
                 return new Result
@@ -30,11 +29,6 @@ namespace MasterServer
             var result = codeExecutor.Execute(fileName);
 
             return result;
-        }
-
-        private string GetLanguageOfTheCode(string fileName)
-        {
-            return "C#";
         }
     }
 }

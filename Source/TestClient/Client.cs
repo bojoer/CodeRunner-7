@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.IO;
 using System.Net;
+using System.Text;
 
 namespace TestClient
 {
@@ -31,8 +32,13 @@ namespace TestClient
 
         private void SendFileToServer()
         {
-            const string fileToUpload = @"C:\test.txt";
+            const string fileToUpload = @"C:\problem1.cs";
             const string uploadUrl = "http://localhost:8000/";
+            var encoder = new UTF8Encoding();
+
+            var userName = encoder.GetBytes("user1\r\n");
+            var programCode = encoder.GetBytes("problem1\r\n");
+            var languageUsed = encoder.GetBytes("C#\r\n");
 
             var fileStream = new FileStream(fileToUpload, FileMode.Open);
 
@@ -48,8 +54,12 @@ namespace TestClient
             // Get data from upload file to inData 
             fileStream.Read(inData, 0, int.Parse(fileStream.Length.ToString(CultureInfo.InvariantCulture)));
 
+//            requestStream.Write(userName, 0, userName.Length);
+//            requestStream.Write(programCode, 0, programCode.Length);
+//            requestStream.Write(languageUsed, 0, languageUsed.Length);
+
             // put data into request stream
-            requestStream.Write(inData, 0, int.Parse(fileStream.Length.ToString(CultureInfo.InvariantCulture)));
+            requestStream.Write(inData, 0, (int)fileStream.Length);
 
             fileStream.Close();
 

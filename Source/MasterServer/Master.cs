@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.IO;
+using System.Net;
 using System.Threading;
 using MasterServer.Constants;
 using MasterServer.Interfaces;
@@ -14,6 +15,7 @@ namespace MasterServer
         public Master(IClientHandler clientHandler)
         {
             ClientHandler = clientHandler;
+            CreateRequiredFilesAndDirectories();
         }
 
         public void Start()
@@ -39,6 +41,12 @@ namespace MasterServer
         {
             var httpContext = (HttpListenerContext) obj;
             ClientHandler.HandleClient(httpContext);
+        }
+
+        private void CreateRequiredFilesAndDirectories()
+        {
+            string codeFilesDir = "CodeFiles";
+            Directory.CreateDirectory(FileConstants.BasePath + "\\" + FileConstants.CodeFilesDir);
         }
 
         static void Main(string[] args)
