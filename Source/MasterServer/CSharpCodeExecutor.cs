@@ -12,7 +12,7 @@ namespace MasterServer
     {
         public IResult Execute(string codeFilePath)
         {
-            var fileName = Path.GetFileName(codeFilePath);
+            var fileName = Path.GetFileNameWithoutExtension(codeFilePath);
             var testerFileName = this.GetTesterName(fileName);
             var testerFilePath = FileConstants.TesterFilesPath + "\\" + testerFileName;
 
@@ -24,7 +24,7 @@ namespace MasterServer
                 return this.HandleCompilationErrors(compilerResultsForCode);
             }
 
-            var solutionInstance = compilerResultsForCode.CompiledAssembly.CreateInstance("MasterServer.Problem1") as ISolution;
+            var solutionInstance = compilerResultsForCode.CompiledAssembly.CreateInstance("Problem1") as ISolution;
 
             var isSuccessful = (bool)CodeExecutionUtilities.Run(compilerResultsForTester, "MasterServer.TesterFiles.Problem1Tester" , "Test", new[] { solutionInstance as Object });
 
@@ -40,8 +40,7 @@ namespace MasterServer
 
         private string GetTesterName(string fileName)
         {
-//            return fileName + "_TESTER.cs";
-            return "Problem1Tester.cs";
+            return fileName + "Tester.cs";
         }
 
 

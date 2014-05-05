@@ -10,6 +10,7 @@ namespace MasterServer.TesterFiles
         {
             IProblem1 solution = soln as IProblem1;
             int sum = solution.Add(1, 2);
+            // soln.invokeMethod("Add", 1, 2);
 
             return sum == 3;
         }

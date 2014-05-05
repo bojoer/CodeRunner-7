@@ -4,8 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
-using MasterServer.Interfaces;
-
 using Microsoft.CSharp;
 
 namespace MasterServer.Utilities
@@ -19,7 +17,7 @@ namespace MasterServer.Utilities
                                      GenerateInMemory = true,
                                      TreatWarningsAsErrors = false,
                                      GenerateExecutable = false,
-                                     CompilerOptions = "/optimize"
+                                     CompilerOptions = "/optimize",
                                  };
 
             var assembly = GetExecutingAssemblyName();

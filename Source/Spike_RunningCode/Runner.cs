@@ -2,6 +2,7 @@
 using System.CodeDom.Compiler;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 using Microsoft.CSharp;
 
@@ -11,7 +12,7 @@ namespace Spike_RunningCode
     {
         static void Main(string[] args)
         {
-            File.Create(@"C:\Projects\CodeRunner\Source\Spike_RunningCode\CodeFiles\test.cs");
+            Console.WriteLine(typeof(Runner).Namespace);
             Console.ReadLine();
         }
 

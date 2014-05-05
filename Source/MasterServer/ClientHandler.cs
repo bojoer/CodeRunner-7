@@ -37,7 +37,7 @@ namespace MasterServer
             using(var streamReader = new StreamReader(requestStream))
             {
                 this.userName = "user1";
-                this.programCode = "foo";
+                this.programCode = "Problem1";
                 this.languageUsed = "C#";
 
                 Console.WriteLine("Username = {0}, ProgramCode = {1}, LanguageUsed = {2}", userName, programCode, languageUsed);
@@ -46,6 +46,7 @@ namespace MasterServer
 
                 using (var fileWriter = new StreamWriter(fullFilePath))
                 {
+                    fileWriter.WriteLine("using MasterServer;");
                     var data = streamReader.ReadLine();
                     while (data != null)
                     {
@@ -65,7 +66,7 @@ namespace MasterServer
                 Directory.CreateDirectory(userDirectoryPath);
             }
 
-            fullFilePath = userDirectoryPath + "\\" + programCode + "_" + languageUsed + GetExtensionForLanguageUsed(languageUsed);
+            fullFilePath = userDirectoryPath + "\\" + programCode + GetExtensionForLanguageUsed(languageUsed);
         }
 
         private void ReturnResultToClient(HttpListenerResponse httpResponse, IResult result)

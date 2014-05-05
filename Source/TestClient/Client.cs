@@ -32,7 +32,7 @@ namespace TestClient
 
         private void SendFileToServer()
         {
-            const string fileToUpload = @"C:\problem1.cs";
+            const string fileToUpload = @"C:\Problem1.cs";
             const string uploadUrl = "http://localhost:8000/";
             var encoder = new UTF8Encoding();
 
