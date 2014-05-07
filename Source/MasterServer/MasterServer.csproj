@@ -54,7 +54,7 @@
     <Compile Include="Interfaces\ISolution.cs" />
     <Compile Include="Interfaces\ITester.cs" />
     <Compile Include="IProblem1.cs" />
-    <Compile Include="Problem1.cs" />
+    <Compile Include="TestCaseOutput.cs" />
     <Compile Include="TesterFiles\Problem1Tester.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="ClientHandler.cs" />
@@ -64,12 +64,16 @@
     <Compile Include="Master.cs" />
     <Compile Include="CodeExecutorFactory.cs" />
     <Compile Include="Utilities\CodeExecutionUtilities.cs" />
+    <Compile Include="Utilities\FileUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Todo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

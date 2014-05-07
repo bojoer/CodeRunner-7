@@ -1,0 +1,1 @@
+﻿<?xml version="1.0" encoding="utf-8"?><FailedTestCase><Input>1 2</Input><ExpectedOutput>3</ExpectedOutput><ReceivedOutput>2</ReceivedOutput><ExceptionThrown /></FailedTestCase>

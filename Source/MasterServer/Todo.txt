@@ -1,0 +1,3 @@
+﻿1. Use xml to specify errors when a test case fails.
+2. Generate paths dynamically based on the assembly's location
+3. Complete the client side

@@ -11,7 +11,7 @@ namespace MasterServer
             {
                 return new Result
                 {
-                    IsSuccessFul = false,
+                    RanSuccessfully = false,
                     ErrorMessage = ErrorMessages.UnableToDetectLanguage
                 };
             }
@@ -21,7 +21,7 @@ namespace MasterServer
             {
                 return new Result
                 {
-                    IsSuccessFul = false,
+                    RanSuccessfully = false,
                     ErrorMessage = ErrorMessages.UnSupportedLanguage
                 };
             }

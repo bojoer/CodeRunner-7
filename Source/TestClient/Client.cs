@@ -2,7 +2,11 @@
 using System.Globalization;
 using System.IO;
 using System.Net;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+
+using MasterServer;
+using MasterServer.Interfaces;
 
 namespace TestClient
 {
@@ -25,12 +29,15 @@ namespace TestClient
 
         public void Start()
         {
-            SendFileToServer();
+            var response = SendFileToServer();
             Console.Write("File sent to server");
+            var result = this.ReadResponseFromServer(response);
+
+            PrintResponseToConsole(result);
             Console.ReadLine();
         }
 
-        private void SendFileToServer()
+        private HttpWebResponse SendFileToServer()
         {
             const string fileToUpload = @"C:\Problem1.cs";
             const string uploadUrl = "http://localhost:8000/";
@@ -42,7 +49,7 @@ namespace TestClient
 
             var fileStream = new FileStream(fileToUpload, FileMode.Open);
 
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(uploadUrl);
+            var httpWebRequest = WebRequest.Create(uploadUrl) as HttpWebRequest;
             httpWebRequest.Method = "POST"; // you might use "POST"
             httpWebRequest.ContentLength = fileStream.Length;
             httpWebRequest.AllowWriteStreamBuffering = true;
@@ -63,12 +70,56 @@ namespace TestClient
 
             fileStream.Close();
 
-            var response = httpWebRequest.GetResponse();
+            var response = httpWebRequest.GetResponse() as HttpWebResponse;
 
 //            ReadResponseFromServer((HttpWebResponse)response);
 
             // after uploading close stream 
             requestStream.Close();
+
+            return response;
+        }
+
+        private Result ReadResponseFromServer(HttpWebResponse httpResponse)
+        {
+            Console.WriteLine("Reading message from server");
+            Result result;
+
+            using (var stream = httpResponse.GetResponseStream())
+            {
+                var formatter = new BinaryFormatter();
+                result = (Result)formatter.Deserialize(stream);
+            }
+
+            return result;
+        }
+
+        private void PrintResponseToConsole(Result result)
+        {
+            Console.WriteLine("---------------");
+            Console.WriteLine("Results of your run:");
+
+            if (result.RanSuccessfully)
+            {
+                Console.WriteLine("Congratulations! Your code ran successfully :)");
+            }
+            else if (result.HasCompilationErrors)
+            {
+                Console.WriteLine("The submitted code has compilation errors:");
+                Console.WriteLine(result.ErrorMessage);
+            }
+            else if (result.FailedTestCase != null)
+            {
+                Console.WriteLine("Your solution failed in the following testcase");
+                Console.WriteLine("Input: {0} \nExpected output: {1} \nReceived output: {2} \nException received: {3}", 
+                    result.FailedTestCase.Input, result.FailedTestCase.ExpectedOutput, result.FailedTestCase.ReceivedOutput, string.IsNullOrEmpty(result.FailedTestCase.ExceptionThrown) ? "No exception thrown" : result.FailedTestCase.ExceptionThrown);
+            }
+            else if(!string.IsNullOrEmpty(result.ErrorMessage))
+            {
+                Console.WriteLine(result.ErrorMessage);
+            }
+
+            Console.WriteLine("------------");
         }
     }
 }

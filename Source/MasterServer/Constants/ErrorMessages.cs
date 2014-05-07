@@ -7,5 +7,7 @@
 
         public const string UnSupportedLanguage =
             "The language you have specified is not supported. Please write your code in one of the supported languages.";
+
+        public static string SuccessMessage = "Your program ran successfully!";
     }
 }
